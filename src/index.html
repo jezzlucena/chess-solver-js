@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Board Analyzer 0.1a by Jezz Lucena</title>
+    
+    <script src="./js/model/allowed_move.js" charset="utf-8"></script>
+    <script src="./js/model/move_intent.js" charset="utf-8"></script>
+    <script src="./js/model/position.js" charset="utf-8"></script>
+    
+    <script src="./js/model/pieces/chess_piece.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/pawn.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/rook.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/knight.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/bishop.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/queen.js" charset="utf-8"></script>
+    <script src="./js/model/pieces/king.js" charset="utf-8"></script>
+    
+    <script src="./js/view/chess_board_view.js" charset="utf-8"></script>
+    
+    <script src="./js/controller/chess_board_controller.js" charset="utf-8"></script>
+    
+    <script src="./js/factory/chess_piece_factory.js" charset="utf-8"></script>
+    
+    <script src="./js/util/util.js" charset="utf-8"></script>
+    <script src="./js/util/constants.js" charset="utf-8"></script>
+    
+    <link href="./css/chess_board.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="new Chess_board_view().init();">
+    <div class="app_container">
+        <div class="app">
+            <div class="chess_board_container">
+                <div class="stash dark"></div>
+                <div class="btn" data-team="DARK">List legal moves (Dark)</div>
+                
+                <div class="chess_board">
+                    <div class="row" data-row="0">
+                        <div class="square" data-col="0">
+                            <div class="chess_piece rook dark" data-piece="DRk"></div>
+                        </div>
+                        <div class="square" data-col="1">
+                            <div class="chess_piece knight dark" data-piece="DKt"></div>
+                        </div>
+                        <div class="square" data-col="2">
+                            <div class="chess_piece bishop dark" data-piece="DBp"></div>
+                        </div>
+                        <div class="square" data-col="3">
+                            <div class="chess_piece queen dark" data-piece="DQn"></div>
+                        </div>
+                        <div class="square" data-col="4">
+                            <div class="chess_piece king dark" data-piece="DKg"></div>
+                        </div>
+                        <div class="square" data-col="5">
+                            <div class="chess_piece bishop dark" data-piece="DBp"></div>
+                        </div>
+                        <div class="square" data-col="6">
+                            <div class="chess_piece knight dark" data-piece="DKt"></div>
+                        </div>
+                        <div class="square" data-col="7">
+                            <div class="chess_piece rook dark" data-piece="DRk"></div>
+                        </div>
+                    </div>
+                    <div class="row" data-row="1">
+                        <div class="square" data-col="0">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="1">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="2">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="3">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="4">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="5">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="6">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                        <div class="square" data-col="7">
+                            <div class="chess_piece pawn dark" data-piece="DPn"></div>
+                        </div>
+                    </div>
+                    <div class="row" data-row="2">
+                        <div class="square" data-col="0"></div>
+                        <div class="square" data-col="1"></div>
+                        <div class="square" data-col="2"></div>
+                        <div class="square" data-col="3"></div>
+                        <div class="square" data-col="4"></div>
+                        <div class="square" data-col="5"></div>
+                        <div class="square" data-col="6"></div>
+                        <div class="square" data-col="7"></div>
+                    </div>
+                    <div class="row" data-row="3">
+                        <div class="square" data-col="0"></div>
+                        <div class="square" data-col="1"></div>
+                        <div class="square" data-col="2"></div>
+                        <div class="square" data-col="3"></div>
+                        <div class="square" data-col="4"></div>
+                        <div class="square" data-col="5"></div>
+                        <div class="square" data-col="6"></div>
+                        <div class="square" data-col="7"></div>
+                    </div>
+                    <div class="row" data-row="4">
+                        <div class="square" data-col="0"></div>
+                        <div class="square" data-col="1"></div>
+                        <div class="square" data-col="2"></div>
+                        <div class="square" data-col="3"></div>
+                        <div class="square" data-col="4"></div>
+                        <div class="square" data-col="5"></div>
+                        <div class="square" data-col="6"></div>
+                        <div class="square" data-col="7"></div>
+                    </div>
+                    <div class="row" data-row="5">
+                        <div class="square" data-col="0"></div>
+                        <div class="square" data-col="1"></div>
+                        <div class="square" data-col="2"></div>
+                        <div class="square" data-col="3"></div>
+                        <div class="square" data-col="4"></div>
+                        <div class="square" data-col="5"></div>
+                        <div class="square" data-col="6"></div>
+                        <div class="square" data-col="7"></div>
+                    </div>
+                    <div class="row" data-row="6">
+                        <div class="square" data-col="0">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="1">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="2">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="3">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="4">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="5">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="6">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                        <div class="square" data-col="7">
+                            <div class="chess_piece pawn light" data-piece="LPn"></div>
+                        </div>
+                    </div>
+                    <div class="row" data-row="7">
+                        <div class="square" data-col="0">
+                            <div class="chess_piece rook light" data-piece="LRk"></div>
+                        </div>
+                        <div class="square" data-col="1">
+                            <div class="chess_piece knight light" data-piece="LKt"></div>
+                        </div>
+                        <div class="square" data-col="2">
+                            <div class="chess_piece bishop light" data-piece="LBp"></div>
+                        </div>
+                        <div class="square" data-col="3">
+                            <div class="chess_piece queen light" data-piece="LQn"></div>
+                        </div>
+                        <div class="square" data-col="4">
+                            <div class="chess_piece king light" data-piece="LKg"></div>
+                        </div>
+                        <div class="square" data-col="5">
+                            <div class="chess_piece bishop light" data-piece="LBp"></div>
+                        </div>
+                        <div class="square" data-col="6">
+                            <div class="chess_piece knight light" data-piece="LKt"></div>
+                        </div>
+                        <div class="square" data-col="7">
+                            <div class="chess_piece rook light" data-piece="LRk"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn" data-team="LIGHT">List legal moves (Light)</div>
+                <div class="stash light"></div>
+            </div>
+            <div class="console_container">
+                <div class="title">Legal Moves</div>
+                <div class="moves" id="moves_container"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

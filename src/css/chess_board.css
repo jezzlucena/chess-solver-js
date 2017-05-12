@@ -1,0 +1,131 @@
+html {
+    font-size: 10px;
+    font-family: Helvetica, verdana, arial, sans-serif;
+}
+
+.app_container {
+    display: table;
+    margin: 0 auto;
+}
+.app {
+    display: flex;
+}
+
+.chess_board_container {
+}
+
+.chess_board {
+    display: inline-block;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+    .chess_board .row {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+        .chess_board .row .square {
+            position: relative;
+            display: inline-block;
+            height: 4rem;
+            width: 4rem;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            margin: 0;
+            padding: 0;
+        }
+            .chess_board .row:nth-child(odd) .square:nth-child(odd) { background-color: #eee; }
+            .chess_board .row:nth-child(odd) .square:nth-child(even) { background-color: #ccc; }
+            .chess_board .row:nth-child(even) .square:nth-child(odd) { background-color: #ccc; }
+            .chess_board .row:nth-child(even) .square:nth-child(even) { background-color: #eee; }
+
+.btn {
+    text-align: center;
+    border: 1px solid black;
+    background-color: white;
+    line-height: 3rem;
+    font-size: 1.2rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    transition: 0.5s background-color ease;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+    .btn:hover {
+        background-color: #ddd;
+    }
+
+.stash {
+    position: relative;
+    width: 100%;
+    max-width: 32.8rem;
+    height: 7rem;
+    border: 1px solid black;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    z-index: 999;
+    background-color: white;
+}
+
+    .stash:before {
+        position: absolute;
+        content: '';
+        height: 1rem;
+        width: 100%;
+        top: 0rem;
+        left: 0;
+    }
+    .stash.dark:before { background-color: black; }
+    .stash.light:before { background-color: white; border-bottom: 1px solid black; }
+    
+.chess_piece {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    margin: 0.4rem;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+    .chess_piece.dark.queen { background-image: url('../img/BQn.png') }
+    .chess_piece.dark.king { background-image: url('../img/BKg.png') }
+    .chess_piece.dark.rook { background-image: url('../img/BRk.png') }
+    .chess_piece.dark.bishop { background-image: url('../img/BBp.png') }
+    .chess_piece.dark.knight { background-image: url('../img/BKt.png') }
+    .chess_piece.dark.pawn { background-image: url('../img/BPn.png') }
+    .chess_piece.light.queen { background-image: url('../img/LQn.png') }
+    .chess_piece.light.king { background-image: url('../img/LKg.png') }
+    .chess_piece.light.rook { background-image: url('../img/LRk.png') }
+    .chess_piece.light.bishop { background-image: url('../img/LBp.png') }
+    .chess_piece.light.knight { background-image: url('../img/LKt.png') }
+    .chess_piece.light.pawn { background-image: url('../img/LPn.png') }
+
+    .stash .chess_piece {
+        margin: 0.3rem;
+    }
+    
+.console_container {
+    border: 1px solid black;
+    min-width: 50rem;
+    margin-left: 4rem;
+    max-height: 100%;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+    .console_container .title {
+        font-size: 1.4rem;
+        line-height: 3rem;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+        padding-left: 1rem;
+        border-bottom: 1px solid black;
+        text-transform: uppercase;
+    }
+    
+    .console_container .moves {
+        padding: 0 1rem;
+    }
